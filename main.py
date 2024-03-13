@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import yfinance as yf
 
 
@@ -10,9 +9,9 @@ class InvestmentSimulator:
 
         Args:
             assets (list): Lista de símbolos dos ativos a serem simulados.
-            investment_amount (float, opcional): Valor inicial do investimento. O padrão é 5000.
+            investment_amount (float, opcional): Valor inicial do investimento.
             simulations (int, opcional): Número de simulações a serem executadas. O padrão é 10000.
-            time_horizon (int, opcional): Horizonte de tempo em meses para a simulação. O padrão é 5 * 12.
+            time_horizon (int, opcional): Horizonte de tempo em meses para a simulação. O padrão é 5
         """
         self.assets = [asset + ".SA" for asset in assets]  # Adiciona ".SA" aos símbolos dos ativos
         self.investment_amount = investment_amount  # Valor inicial do investimento
@@ -57,11 +56,12 @@ class InvestmentSimulator:
 if __name__ == "__main__":
     assets = ['PETR4', 'WEGE3', 'LEVE3', 'BBDC4']
     # Cria uma instância do simulador de investimento
-    simulator = InvestmentSimulator(assets, investment_amount=1000.0, simulations=10000, time_horizon=10)
+    simulator = InvestmentSimulator(assets, investment_amount=10000.0, simulations=10000, time_horizon=10)
     # Calcula as estatísticas dos resultados das simulações
     mean_profit, std_deviation, percentile_5, percentile_50, percentile_95 = simulator.calculate_statistics()
     # Imprime as estatísticas
     # Impressão das estatísticas do lucro final
+    print(f"Ativos: {assets}")
     print(f"Lucro final médio: R$ {mean_profit:.2f}")               # Média do lucro final
     print(f"Desvio padrão do lucro final: R$ {std_deviation:.2f}")  # Volatilidade do lucro final
     print(f"5º percentil do lucro final: R$ {percentile_5:.2f}")    # Menor lucro final em 5% das simulações
